@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import AboutPage from "./Component/fungsional/AboutPage";
 import DetailComp from "./Component/fungsional/DetailComp";
 import ListComp from "./Component/class/ListComp";
+import ListTambah from "./Component/class/ListTambah";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/about" element={<AboutPage/>}/>
           <Route path="/detail/:id" element={<DetailComp/>}/>
           <Route path="/mahasiswa" element={<ListComp/>}/>
+          <Route path="/mahasiswa/tambah" element={<ListTambah/>}/>
         </Routes>
 
 

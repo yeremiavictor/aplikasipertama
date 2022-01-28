@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // import qs from 'querystring';
-import { Container, Table } from 'reactstrap';
-// import { Container, Table, Button } from 'reactstrap';
+import { Container, Table, NavLink, Button } from 'reactstrap';
+
 
 
 const api = 'http://localhost:3001'
@@ -33,6 +33,9 @@ export class ListComp extends Component {
             <div>
                 <Container>
                     <h3>Data Mahasiswa</h3>
+                    <NavLink href='mahasiswa/tambah'>
+                        <Button className='btn-primary'>Tambah</Button>
+                    </NavLink>
                     <hr />
                     <Table className='table-bordered'>
                         <thead>
