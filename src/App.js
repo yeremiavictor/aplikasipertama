@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+// import Home from "./Component/fungsional/Home";
+// import Parent from "./Component/class/Parent-child/Parent";
+// import BootstrapComp from "./Component/class/BootstrapComp";
+import NavbarComp from "./Component/fungsional/NavbarComp";
+import Homepage from "./Component/fungsional/Homepage";
+import { Routes, Route } from "react-router-dom";
+import AboutPage from "./Component/fungsional/AboutPage";
+import DetailComp from "./Component/fungsional/DetailComp";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Home /> */}
+      {/* <Parent /> */}
+      {/* <BootstrapComp /> */}
+
+      <NavbarComp />
+        <Routes>
+          <Route path="/" element={<Homepage/>}/>
+          <Route path="/about" element={<AboutPage/>}/>
+          <Route path="/detail/:id" element={<DetailComp/>}/>
+        </Routes>
+
+
     </div>
   );
 }
 
 export default App;
+
