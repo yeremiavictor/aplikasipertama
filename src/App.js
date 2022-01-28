@@ -6,6 +6,7 @@ import Homepage from "./Component/fungsional/Homepage";
 import { Routes, Route } from "react-router-dom";
 import AboutPage from "./Component/fungsional/AboutPage";
 import DetailComp from "./Component/fungsional/DetailComp";
+import ListComp from "./Component/class/ListComp";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Homepage/>}/>
           <Route path="/about" element={<AboutPage/>}/>
           <Route path="/detail/:id" element={<DetailComp/>}/>
+          <Route path="/mahasiswa" element={<ListComp/>}/>
         </Routes>
 
 

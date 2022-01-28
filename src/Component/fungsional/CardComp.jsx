@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardBody, CardTitle,CardSubtitle, CardText, Button} from 'reactstrap'
-import { useLocation,NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function CardComp(props) {
 
