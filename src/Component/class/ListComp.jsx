@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import qs from 'querystring';
-import { Container, Table, NavLink, Button } from 'reactstrap';
+import qs from 'querystring';
+import { Container, Table, NavLink, Button, Alert } from 'reactstrap';
+import { Link, useParams } from 'react-router-dom';
 
 
 
@@ -28,11 +29,42 @@ export class ListComp extends Component {
         })
     }
     
+    DeleteMahasiswa = (idmahasiswa) => {
+        const {mahasiswa} = this.state
+        const data = qs.stringify({
+            id:idmahasiswa
+        })
+
+        axios.delete(api+'/hapus',
+            {
+                data:data,
+                headers: {'Content-type': 'application/x-www-form-urlencoded'}
+            }
+        ).then(json=>{
+            if(json.data.status ===200){
+                this.setState({
+                    response: json.data.value,
+                    mahasiswa : mahasiswa.filter(mahasiswa => mahasiswa.id !== idmahasiswa),
+                    display: 'block'
+                })
+                this.props.history.push('/mahasiswa')
+            }else{
+                this.setState({
+                    response: json.data.value,
+                    display:'block'
+                })
+
+                // this.props.history.push('/mahasiswa')
+            }
+        })
+    }
+
     render() {
         return (
             <div>
                 <Container>
                     <h3>Data Mahasiswa</h3>
+                    <Alert style={{display: this.state.display}}>{this.state.response}</Alert>
                     <NavLink href='mahasiswa/tambah'>
                         <Button className='btn-primary'>Tambah</Button>
                     </NavLink>
@@ -52,7 +84,28 @@ export class ListComp extends Component {
                                     <td>{mahasiswa.nim}</td>
                                     <td>{mahasiswa.nama}</td>
                                     <td>{mahasiswa.jurusan}</td>
-                                    <td>Edit | Hapus</td>
+                                    <td>
+
+                                    
+                                    {/* <Link to={{
+                                        pathname:`/mahasiswa/edit/`,
+                                            state:{
+                                                id:mahasiswa.id,
+                                                nim:mahasiswa.nim,
+                                                nama:mahasiswa.nama,
+                                                jurusan:mahasiswa.jurusan
+                                            }
+                                        }}>
+                                            <Button>Edit</Button>
+                                    </Link> */}
+                                    <Link to={`/mahasiswa/edit/${mahasiswa.id}`}>
+                                            <Button>Edit</Button>
+                                    </Link>
+                                    
+                                    <span> </span>
+
+                                    <Button onClick={()=> this.DeleteMahasiswa(mahasiswa.id)}>Hapus</Button>
+                                    </td>
                                 </tr>    
                             )}
                         </tbody>
